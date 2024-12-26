@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://kiijx3k1y2ay"]
+
+[ext_resource type="PackedScene" uid="uid://ecb7qsri3uq" path="res://assets/characters/barash.glb" id="1_1h8e6"]
+[ext_resource type="Script" path="res://scripts/MashupDancer.gd" id="1_j6qn0"]
+[ext_resource type="PackedScene" uid="uid://koqd16w3x8ff" path="res://assets/characters/karych.glb" id="2_kabkq"]
+[ext_resource type="PackedScene" uid="uid://cr66tl66guvqp" path="res://assets/characters/kopatych.glb" id="3_bntyh"]
+[ext_resource type="PackedScene" uid="uid://d7q2xlj0f6d" path="res://assets/characters/krosh.glb" id="4_px8ca"]
+[ext_resource type="PackedScene" uid="uid://chj1ads3i8aww" path="res://assets/characters/losyash.glb" id="5_p4r0p"]
+[ext_resource type="PackedScene" uid="uid://dv6reg1mcgmyk" path="res://assets/characters/nyusha.glb" id="6_k2nkc"]
+[ext_resource type="PackedScene" uid="uid://csnbbns6jsxae" path="res://assets/characters/pin.glb" id="7_h3spo"]
+[ext_resource type="PackedScene" uid="uid://cx1r1xr56laeh" path="res://assets/characters/sovunya.glb" id="8_6c68y"]
+[ext_resource type="PackedScene" uid="uid://b51s2txmumks" path="res://assets/characters/yozhik.glb" id="9_oqurq"]
+
+[node name="dancer" type="Node3D"]
+script = ExtResource("1_j6qn0")
+
+[node name="krosh" parent="." instance=ExtResource("4_px8ca")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="yozhik" parent="." instance=ExtResource("9_oqurq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="losyash" parent="." instance=ExtResource("5_p4r0p")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="nyusha" parent="." instance=ExtResource("6_k2nkc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="kopatych" parent="." instance=ExtResource("3_bntyh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="barash" parent="." instance=ExtResource("1_1h8e6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="karych" parent="." instance=ExtResource("2_kabkq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="pin" parent="." instance=ExtResource("7_h3spo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="sovunya" parent="." instance=ExtResource("8_6c68y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false

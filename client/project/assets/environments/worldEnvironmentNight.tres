@@ -1,0 +1,41 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://lipp3kwwrpdo"]
+
+[ext_resource type="Texture2D" uid="uid://cwetbcuv7lati" path="res://assets/skyboxes/sky1-night.png" id="1_eqa4i"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fkd55"]
+panorama = ExtResource("1_eqa4i")
+
+[sub_resource type="Sky" id="Sky_n3trj"]
+sky_material = SubResource("PanoramaSkyMaterial_fkd55")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_n3trj")
+ambient_light_source = 2
+ambient_light_color = Color(0.192157, 0.227451, 1, 1)
+tonemap_mode = 3
+tonemap_exposure = 0.5
+tonemap_white = 0.7
+ssil_radius = 2.75
+ssil_intensity = 3.45
+glow_intensity = 3.47
+glow_strength = 1.23
+fog_enabled = true
+fog_light_color = Color(0.164706, 0.0980392, 0.713726, 1)
+fog_light_energy = 0.84
+fog_density = 0.0285
+fog_sky_affect = 0.0
+fog_height = -2.0
+fog_height_density = 0.2
+volumetric_fog_density = 0.02
+volumetric_fog_emission = Color(0.266667, 0.717647, 0.67451, 1)
+volumetric_fog_emission_energy = 2.0
+volumetric_fog_anisotropy = 0.38
+volumetric_fog_length = 71.7
+volumetric_fog_ambient_inject = 1.72
+volumetric_fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_brightness = 0.8
+adjustment_contrast = 1.07
+adjustment_saturation = 0.78

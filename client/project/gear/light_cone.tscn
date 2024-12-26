@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyc2bheexo065"]
+
+[ext_resource type="Script" path="res://scripts/LightCone.gd" id="1_dom8w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mkdn"]
+resource_local_to_scene = true
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+diffuse_mode = 3
+albedo_color = Color(1, 1, 1, 0.188235)
+disable_receive_shadows = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5nayb"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(127, 144)
+material = SubResource("StandardMaterial3D_7mkdn")
+top_radius = 0.0
+bottom_radius = 4.0
+height = 20.0
+cap_top = false
+
+[node name="LightCone" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+rotation_order = 0
+script = ExtResource("1_dom8w")
+
+[node name="meshhold" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="mesh" type="MeshInstance3D" parent="meshhold"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+mesh = SubResource("CylinderMesh_5nayb")
+
+[node name="light" type="SpotLight3D" parent="."]
+light_energy = 20.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.3
+spot_range = 20.0
+spot_angle = 11.32
+spot_angle_attenuation = 0.00108357
+
+[node name="sfx" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74846e-07, -4)
+volume_db = -12.0

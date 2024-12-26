@@ -1,0 +1,154 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvwkedsxf85ux"]
+
+[sub_resource type="GDScript" id="GDScript_uvk58"]
+script/source = "extends Control
+
+func _ready():
+	update_debug_mode_btn()
+	%refetchEpisode.button_pressed = get_node(\"/root/Global\").flags.REFETCH_EPISODE
+	%flagMusic.button_pressed = get_node(\"/root/Global\").flags.MUSIC
+	%flagDonations.button_pressed = get_node(\"/root/Global\").flags.DONATIONS
+	%flagYoutube.button_pressed = get_node(\"/root/Global\").flags.YOUTUBE
+	%flagDevserver.button_pressed = get_node(\"/root/Global\").flags.DEVSERVER
+
+func _on_button_pressed():
+	get_node(\"/root/Global\").load_intro_scene()
+
+
+func _on_button_2_pressed():
+	get_node(\"/root/Global\").start_generation_loop()
+
+
+func _on_debug_mode_pressed():
+	get_node(\"/root/Global\").DEBUG_MODE = !get_node(\"/root/Global\").DEBUG_MODE
+	update_debug_mode_btn()
+	
+func update_debug_mode_btn():
+	if get_node(\"/root/Global\").DEBUG_MODE:
+		%debugMode.text = \"Выключить оффлайн режим\"
+	else:
+		%debugMode.text = \"Включить оффлайн режим\"
+
+
+func _on_button_3_pressed():
+	get_node(\"/root/Global\").load_random_world()
+
+
+func _on_refetch_episode_toggled(button_pressed):
+	get_node(\"/root/Global\").flags.REFETCH_EPISODE = button_pressed
+
+func _on_flag_music_toggled(button_pressed):
+	get_node(\"/root/Global\").flags.MUSIC = button_pressed
+
+func _on_flag_donations_toggled(button_pressed):
+	get_node(\"/root/Global\").flags.DONATIONS = button_pressed
+
+func _on_flag_youtube_toggled(button_pressed):
+	get_node(\"/root/Global\").flags.YOUTUBE = button_pressed
+
+func _on_flag_devserver_toggled(button_pressed):
+	get_node(\"/root/Global\").flags.DEVSERVER = button_pressed
+"
+
+[node name="root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_uvk58")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 304.0
+offset_right = 660.0
+offset_bottom = 335.0
+text = "Начать базу
+"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 261.0
+offset_right = 713.0
+offset_bottom = 292.0
+text = "Подключиться к серверу"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 341.0
+offset_right = 658.0
+offset_bottom = 372.0
+text = "Сразу к делу"
+
+[node name="debugMode" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 499.0
+offset_top = 391.0
+offset_right = 728.0
+offset_bottom = 422.0
+text = "Включить оффлайн режим"
+
+[node name="refetchEpisode" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 434.0
+offset_top = 448.0
+offset_right = 794.0
+offset_bottom = 479.0
+button_pressed = true
+text = "Начать с уже сгенерированного эпизода"
+
+[node name="flagMusic" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 434.0
+offset_top = 484.0
+offset_right = 529.0
+offset_bottom = 515.0
+button_pressed = true
+text = "Музыка"
+
+[node name="flagDonations" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 527.0
+offset_top = 485.0
+offset_right = 622.0
+offset_bottom = 516.0
+button_pressed = true
+text = "Донаты"
+
+[node name="flagYoutube" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 624.0
+offset_top = 485.0
+offset_right = 719.0
+offset_bottom = 516.0
+button_pressed = true
+text = "YouTube"
+
+[node name="flagDevserver" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 720.0
+offset_top = 485.0
+offset_right = 823.0
+offset_bottom = 516.0
+button_pressed = true
+text = "Localhost"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="debugMode" to="." method="_on_debug_mode_pressed"]
+[connection signal="toggled" from="refetchEpisode" to="." method="_on_refetch_episode_toggled"]
+[connection signal="toggled" from="flagMusic" to="." method="_on_flag_music_toggled"]
+[connection signal="toggled" from="flagDonations" to="." method="_on_flag_donations_toggled"]
+[connection signal="toggled" from="flagYoutube" to="." method="_on_flag_youtube_toggled"]
+[connection signal="toggled" from="flagDevserver" to="." method="_on_flag_devserver_toggled"]

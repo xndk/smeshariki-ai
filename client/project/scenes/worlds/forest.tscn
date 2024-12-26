@@ -1,0 +1,377 @@
+[gd_scene load_steps=38 format=3 uid="uid://ceit1sx858e51"]
+
+[ext_resource type="PackedScene" uid="uid://i55vqagr8wtc" path="res://graphics/EpisodeUI.tscn" id="1_k7v2k"]
+[ext_resource type="Environment" uid="uid://byqx05h4qs8vn" path="res://assets/environments/worldEnvironmentDay.tres" id="2_ubmb6"]
+[ext_resource type="PackedScene" uid="uid://cnxn3hupmoa8h" path="res://assets/locations/grassfield1.glb" id="4_mgv2r"]
+[ext_resource type="PackedScene" uid="uid://cg554adq8nyos" path="res://assets/locations/GrassHills2.glb" id="5_50rbe"]
+[ext_resource type="PackedScene" uid="uid://4b2li2wquy7w" path="res://gear/floor_collision.tscn" id="5_m1x3i"]
+[ext_resource type="PackedScene" uid="uid://cacffqhcgg8hj" path="res://assets/locations/tree1.glb" id="6_d5snq"]
+[ext_resource type="PackedScene" uid="uid://br2dn80cw3ubs" path="res://assets/locations/PineTree1.glb" id="6_ofm1n"]
+[ext_resource type="Texture2D" uid="uid://bipmskt2xwami" path="res://assets/locations/sprites/foresttreespatch.png" id="7_lirhk"]
+[ext_resource type="PackedScene" uid="uid://gkb1ip82jxac" path="res://assets/locations/bush1.glb" id="7_xjhs1"]
+[ext_resource type="PackedScene" uid="uid://b5lmh8twmw080" path="res://assets/locations/losyashs_house1.glb" id="8_6k56w"]
+[ext_resource type="PackedScene" uid="uid://by2p13dh6vih4" path="res://assets/locations/bush2.glb" id="8_uom3e"]
+[ext_resource type="PackedScene" uid="uid://cm445jawc17kp" path="res://assets/locations/bush3.glb" id="9_p311u"]
+[ext_resource type="PackedScene" uid="uid://cq1wplvkwdyuu" path="res://assets/locations/Tree2.glb" id="10_k5fiu"]
+[ext_resource type="PackedScene" uid="uid://cmpbcba1l4vfs" path="res://assets/locations/Beach1Water.glb" id="11_bkih8"]
+[ext_resource type="Script" path="res://scripts/BackgroundAnimation.gd" id="12_b7scs"]
+[ext_resource type="Texture2D" uid="uid://bvsvwijkjnrc3" path="res://assets/locations/sprites/house-kopatych.png" id="16_6mrnp"]
+[ext_resource type="Texture2D" uid="uid://bikiji5m0if0x" path="res://assets/locations/sprites/house-karych.png" id="16_s8e7t"]
+[ext_resource type="Script" path="res://scripts/EnvironmentDependent.gd" id="19_be4w0"]
+[ext_resource type="PackedScene" uid="uid://dbo3564flg7et" path="res://characters/krosh.tscn" id="20_7jmsd"]
+[ext_resource type="PackedScene" uid="uid://d08xjuu7j4lm8" path="res://characters/yozhik.tscn" id="21_rmicv"]
+[ext_resource type="PackedScene" uid="uid://dupr7rjnqidoc" path="res://characters/losyash.tscn" id="22_vwijd"]
+[ext_resource type="PackedScene" uid="uid://bmwjphtpif30m" path="res://characters/nyusha.tscn" id="23_ygod7"]
+[ext_resource type="PackedScene" uid="uid://w87u8lrpnxbr" path="res://characters/barash.tscn" id="24_atstk"]
+[ext_resource type="PackedScene" uid="uid://dkryo8ohtdplf" path="res://characters/kopatych.tscn" id="25_lwsf6"]
+[ext_resource type="PackedScene" uid="uid://dkug71e4ohbar" path="res://characters/karych.tscn" id="26_s1qpc"]
+[ext_resource type="PackedScene" uid="uid://01al11kavc4j" path="res://characters/sovunya.tscn" id="27_7ygah"]
+[ext_resource type="PackedScene" uid="uid://kpwi1hnka3b6" path="res://characters/pin.tscn" id="28_qsbar"]
+[ext_resource type="PackedScene" uid="uid://1ylgrn4gk1c4" path="res://characters/dicktor.tscn" id="29_7k56q"]
+[ext_resource type="PackedScene" uid="uid://c1ncou1vjumnm" path="res://characters/bibi.tscn" id="29_8i2vl"]
+[ext_resource type="PackedScene" uid="uid://ch0qumkt86xxf" path="res://gear/mashup_effects.tscn" id="29_isxxg"]
+[ext_resource type="PackedScene" uid="uid://ciqdud4lbyi7g" path="res://gear/tripod.tscn" id="30_y6ml0"]
+[ext_resource type="Script" path="res://scripts/Director.gd" id="31_hj65o"]
+
+[sub_resource type="Animation" id="Animation_s6b6s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beach1Water:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-10.8773, 0.829987, -1.77659)]
+}
+
+[sub_resource type="Animation" id="Animation_7rcbg"]
+resource_name = "WaterMovement"
+length = 40.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beach1Water:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8.1, 14, 20, 28.3, 34, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-10.7218, 0.829987, -2.78881), Vector3(-10.8065, 0.716303, -2.23731), Vector3(-10.8881, 1.1022, -1.70623), Vector3(-10.9359, 0.829987, -1.39504), Vector3(-10.8485, 0.872737, -1.96417), Vector3(-10.7652, 0.773312, -2.50615), Vector3(-10.7218, 0.829987, -2.78881)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qhk2d"]
+_data = {
+"RESET": SubResource("Animation_s6b6s"),
+"WaterMovement": SubResource("Animation_7rcbg")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ok5v3"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0.627451, 0.415686)
+
+[sub_resource type="SphereMesh" id="SphereMesh_w0ois"]
+material = SubResource("StandardMaterial3D_ok5v3")
+radius = 0.05
+height = 0.1
+radial_segments = 4
+rings = 1
+
+[node name="World" type="Node3D"]
+
+[node name="UI" parent="." instance=ExtResource("1_k7v2k")]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = ExtResource("2_ubmb6")
+
+[node name="Location" type="Node3D" parent="."]
+
+[node name="sun" type="DirectionalLight3D" parent="Location"]
+unique_name_in_owner = true
+transform = Transform3D(0.99863, 0.0523359, -5.02463e-08, 0.0127791, -0.243839, 0.969732, 0.0507518, -0.968403, -0.244174, -1.43507, 6.44034, 3.55288)
+light_color = Color(0.85098, 0.862745, 0.87451, 1)
+light_energy = 0.48
+shadow_enabled = true
+shadow_bias = 0.038
+shadow_blur = 7.82
+
+[node name="floor" type="Node3D" parent="Location"]
+
+[node name="FloorCollision" parent="Location/floor" instance=ExtResource("5_m1x3i")]
+
+[node name="GrassHills2" parent="Location/floor" instance=ExtResource("5_50rbe")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.19, 0.631)
+
+[node name="grassfield2" parent="Location/floor" instance=ExtResource("4_mgv2r")]
+transform = Transform3D(-1.489, 0, -0.181349, 0, 1, 0, 0.181349, 0, -1.489, 4.18841, -1.1792, -25.5897)
+
+[node name="plants" type="Node3D" parent="Location"]
+
+[node name="PineTree1" parent="Location/plants" instance=ExtResource("6_ofm1n")]
+transform = Transform3D(1.63935, 0, 0, 0, 1.63935, 0, 0, 0, 1.63935, -2.34703, -0.789098, 18.5495)
+
+[node name="PineTree2" parent="Location/plants" instance=ExtResource("6_ofm1n")]
+transform = Transform3D(0.845832, -0.178473, 0.941608, 0.253167, 1.53454, -0.0238902, -0.95767, 0.248036, 0.825331, -4.80362, -2.0873, 20.5544)
+
+[node name="PineTree3" parent="Location/plants" instance=ExtResource("6_ofm1n")]
+transform = Transform3D(1.32625, 0.105771, 1.3205, 0.098835, 2.35736, -0.183992, -1.48322, 0.25166, 1.16849, 1.87019, -2.0873, 21.5913)
+
+[node name="PineTree4" parent="Location/plants" instance=ExtResource("6_ofm1n")]
+transform = Transform3D(-1.05933, 0.209411, 1.53282, 0.117464, 1.55583, -0.221842, -1.63364, -0.0239224, -1.0099, 11.4604, -1.2078, 11.7611)
+
+[node name="Sprite3D" type="Sprite3D" parent="Location/plants"]
+transform = Transform3D(3.00918, 0, 0, 0, 3.00918, 0, 0, 0, 3.00918, 0.217642, 1.85766, 25.3346)
+shaded = true
+texture = ExtResource("7_lirhk")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Location/plants"]
+transform = Transform3D(-6.72879, -0.7092, 0, -0.693216, 6.88394, 0, 0, 0, 3.00918, 0.217642, 7.91746, 56.9639)
+shaded = true
+texture = ExtResource("7_lirhk")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Location/plants"]
+transform = Transform3D(1.02382, 0, -2.82966, 0, 3.00918, 0, 2.82966, 0, 1.02382, -20.348, 1.85766, 7.7261)
+shaded = true
+texture = ExtResource("7_lirhk")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Location/plants"]
+transform = Transform3D(2.0103, 0, 2.23917, 0, 3.00918, 0, -2.23917, 0, 2.0103, 27.8604, 1.85766, 14.8346)
+shaded = true
+texture = ExtResource("7_lirhk")
+
+[node name="bush5" parent="Location/plants" instance=ExtResource("8_uom3e")]
+transform = Transform3D(0.821226, -0.326283, -1.03626, 0, 1.04651, -0.456205, 1.27939, 0.209438, 0.665162, -9.21235, -0.627608, 14.5427)
+
+[node name="bush11" parent="Location/plants" instance=ExtResource("9_p311u")]
+transform = Transform3D(2.17914, -0.23072, -0.268742, 0.310282, 1.78942, 0.248061, 0.229653, -0.228403, 2.2149, -12.1175, -0.486847, 1.16944)
+
+[node name="bush13" parent="Location/plants" instance=ExtResource("9_p311u")]
+transform = Transform3D(-0.803222, 0.0908739, -1.37046, -0.644433, 1.39451, 0.277713, 1.84638, 0.526252, -0.499255, -12.008, -0.971607, 8.75538)
+
+[node name="bush14" parent="Location/plants" instance=ExtResource("9_p311u")]
+transform = Transform3D(0.439542, -1.76186, -1.02011, -0.0193696, 1.77561, -1.06942, 1.84544, 0.438274, 0.231744, -5.58035, -0.311093, 14.1951)
+
+[node name="bush12" parent="Location/plants" instance=ExtResource("7_xjhs1")]
+transform = Transform3D(1.88748, -0.238173, -1.25813, 0.247905, 2.2666, -0.0571696, 1.25625, -0.0894368, 1.9016, -13.2027, -0.617379, 5.39072)
+
+[node name="bush6" parent="Location/plants" instance=ExtResource("8_uom3e")]
+transform = Transform3D(0.791127, -0.462206, -0.850328, -0.117958, 1.44727, -0.424869, 1.22684, 0.437206, 0.507481, -30.8803, -2.99764, -18.7346)
+
+[node name="bush19" parent="Location/plants" instance=ExtResource("9_p311u")]
+transform = Transform3D(2.30768, -0.334812, -0.270645, 0.303801, 2.61654, 0.0351888, 0.273531, -0.0814028, 2.24426, -27.441, -0.931418, -29.1031)
+
+[node name="bush20" parent="Location/plants" instance=ExtResource("9_p311u")]
+transform = Transform3D(-0.661766, 0.12792, -1.50664, -0.674095, 1.88309, 0.356437, 1.46341, 0.925257, -0.517125, -27.3314, -2.68994, -21.5984)
+
+[node name="bush21" parent="Location/plants" instance=ExtResource("7_xjhs1")]
+transform = Transform3D(1.93513, -0.345791, -1.19817, 0.12973, 3.28808, -0.227516, 1.30638, 0.185696, 1.79744, -28.5261, -1.21035, -24.8808)
+
+[node name="bush3" parent="Location/plants" instance=ExtResource("7_xjhs1")]
+transform = Transform3D(1.54239, 0.171663, -0.389302, -0.179776, 1.58983, -0.0112258, 0.385623, 0.0545636, 1.55188, 15.9056, -1.7246, 2.55905)
+
+[node name="bush4" parent="Location/plants" instance=ExtResource("7_xjhs1")]
+transform = Transform3D(-0.633285, 0.180126, 1.45826, 0.0717506, 1.58983, -0.165219, -1.46759, 2.62606e-08, -0.637336, 8.27836, -0.289418, 2.5522)
+
+[node name="bush9" parent="Location/plants" instance=ExtResource("8_uom3e")]
+transform = Transform3D(-1.06148, -0.161295, -0.344846, -0.224593, 0.981287, 0.298457, 0.205419, 0.239407, -1.45565, 13.4599, -1.04463, 4.00943)
+
+[node name="bush10" parent="Location/plants" instance=ExtResource("8_uom3e")]
+transform = Transform3D(-0.671353, 0.265814, -1.75856, 0.216515, 0.911967, 0.503613, 1.73156, -0.0109724, -0.744792, 11.9179, -1.7739, 15.5602)
+
+[node name="bush18" parent="Location/plants" instance=ExtResource("8_uom3e")]
+transform = Transform3D(0.346408, 0.129155, -1.35197, -0.0370439, 1.48269, 0.115665, 1.24204, 0.00819959, 0.380518, 8.68861, -2.22227, 19.5953)
+
+[node name="bush15" parent="Location/plants" instance=ExtResource("9_p311u")]
+transform = Transform3D(1.65657, 0.191115, 0.318017, -0.187688, 1.68682, -0.0360311, -0.320052, 0, 1.66717, 9.9612, -0.74132, 1.81294)
+
+[node name="bush16" parent="Location/plants" instance=ExtResource("9_p311u")]
+transform = Transform3D(-0.35074, 0.191115, 1.64995, 0.0397385, 1.68682, -0.186938, -1.66051, 0, -0.352984, 10.4549, -0.124165, 6.46521)
+
+[node name="bush17" parent="Location/plants" instance=ExtResource("9_p311u")]
+transform = Transform3D(1.45462, 0.191115, 0.85407, -0.164807, 1.68682, -0.0967654, -0.859534, -3.9874e-08, 1.46393, 7.58519, 0.200966, 6.43827)
+
+[node name="bush7" parent="Location/plants" instance=ExtResource("7_xjhs1")]
+transform = Transform3D(0.359183, 0.145119, 1.5524, 0.0717506, 1.58983, -0.165219, -1.55751, 0.106706, 0.350392, 24.412, -0.289418, -13.8311)
+
+[node name="bush22" parent="Location/plants" instance=ExtResource("8_uom3e")]
+transform = Transform3D(-0.976868, -0.27177, 0.584494, -0.224593, 0.981287, 0.298457, -0.463317, 0.0973278, -1.37703, 33.4276, -1.04463, -3.42616)
+
+[node name="bush23" parent="Location/plants" instance=ExtResource("9_p311u")]
+transform = Transform3D(1.6811, 0.153972, -0.179139, -0.164807, 1.68682, -0.0967654, 0.169224, 0.113215, 1.68536, 24.6524, -0.100091, -3.59673)
+visible = false
+
+[node name="tree1" parent="Location/plants" instance=ExtResource("6_d5snq")]
+transform = Transform3D(2.45783, 0.22626, 1.70525, -0.305229, 2.98411, 0.0439952, -1.6929, -0.20954, 2.46783, 9.15578, -2.03037, -22.9917)
+
+[node name="tree2" parent="Location/plants" instance=ExtResource("6_d5snq")]
+transform = Transform3D(-0.672624, 0.0331739, 2.23177, 0.172352, 2.88475, 0.0306722, -2.09066, 0.227141, -0.715496, -20.2034, -2.06183, -30.4247)
+
+[node name="tree3" parent="Location/plants" instance=ExtResource("6_d5snq")]
+transform = Transform3D(-1.98929, -0.190398, 0.139766, -0.145649, 2.49034, 0.0981766, -0.146702, 0.109338, -1.9927, -2.43936, -1.83622, -20.6223)
+
+[node name="Tree3" parent="Location/plants" instance=ExtResource("10_k5fiu")]
+transform = Transform3D(1.20027, -0.145393, 0.330786, 0.0706849, 1.21984, 0.27968, -0.354348, -0.249154, 1.17626, -2.46361, -2.4316, -26.4986)
+
+[node name="water" type="Node3D" parent="Location"]
+transform = Transform3D(1.86459, -0.0311686, -11.4775, 0.00235287, 4.32492, -0.0937331, 4.6402, 0.0103316, 4.6121, -18.7387, -6.51619, -26.5804)
+
+[node name="Beach1Water" parent="Location/water" instance=ExtResource("11_bkih8")]
+transform = Transform3D(0.327418, 2.32831e-10, 1.53836, -6.40284e-09, 1.12553, 4.65661e-10, -0.651944, 7.47968e-09, 0.283179, -6.11573, 0.617942, -1.32834)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Location/water"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_qhk2d")
+}
+script = ExtResource("12_b7scs")
+animation_name = "WaterMovement"
+
+[node name="structures" type="Node3D" parent="Location"]
+
+[node name="losyashs_house1" parent="Location/structures" instance=ExtResource("8_6k56w")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 1.47741, 0, 13.9894)
+
+[node name="houseKarych" type="Sprite3D" parent="Location/structures"]
+transform = Transform3D(1.30647, -1.0518, 1.42778, 0.108106, 2.28859, 1.02381, -1.62675, -0.692632, 1.21471, -35.5462, 2.23934, -22.4332)
+texture = ExtResource("16_s8e7t")
+
+[node name="houseKopatych2" type="Sprite3D" parent="Location/structures"]
+transform = Transform3D(1.18822, 0.147882, -1.44214, 0.0446625, 2.16775, 0.213537, 1.36397, -0.19981, 1.24933, 30.592, 2.15891, -11.558)
+texture = ExtResource("16_6mrnp")
+
+[node name="volumetrics" type="Node3D" parent="Location"]
+
+[node name="sunrays1" type="SpotLight3D" parent="Location/volumetrics"]
+transform = Transform3D(0.963563, 0.0341392, -0.265296, 0.0442625, 0.957797, 0.284016, 0.263795, -0.28541, 0.921387, 4.06041, 5.04105, 15.5306)
+light_color = Color(1, 0.772549, 0.278431, 1)
+light_energy = 16.0
+light_volumetric_fog_energy = 16.0
+spot_range = 13.865
+spot_angle = 30.84
+spot_angle_attenuation = 0.500002
+script = ExtResource("19_be4w0")
+active_during_evening = false
+active_during_night = false
+
+[node name="sunrays2" type="SpotLight3D" parent="Location/volumetrics"]
+transform = Transform3D(0.653659, 0, 0.75679, -0.217535, 0.957797, 0.18789, -0.724851, -0.287444, 0.626073, -0.352566, 5.37253, 16.6351)
+light_color = Color(1, 0.772549, 0.278431, 1)
+light_energy = 16.0
+light_volumetric_fog_energy = 16.0
+spot_range = 13.865
+spot_angle = 30.84
+spot_angle_attenuation = 0.500002
+script = ExtResource("19_be4w0")
+active_during_evening = false
+active_during_night = false
+
+[node name="sunparticles" type="CPUParticles3D" parent="Location/volumetrics"]
+transform = Transform3D(0.392594, 0, 0.919712, -0.34746, 0.92589, 0.148319, -0.851552, -0.377792, 0.363499, -2.51012, 2.96892, 14.6112)
+amount = 16
+lifetime = 15.0
+preprocess = 5.0
+randomness = 0.12
+lifetime_randomness = 0.35
+mesh = SubResource("SphereMesh_w0ois")
+emission_shape = 1
+emission_sphere_radius = 4.0
+spread = 25.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 2.0
+script = ExtResource("19_be4w0")
+active_during_night = false
+
+[node name="Characters" type="Node3D" parent="."]
+
+[node name="krosh" parent="Characters" instance=ExtResource("20_7jmsd")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -5.24333, 0.125406, -1.31725)
+
+[node name="yozhik" parent="Characters" instance=ExtResource("21_rmicv")]
+transform = Transform3D(0.585467, 0, -0.810696, 0, 1, 0, 0.810696, 0, 0.585467, -0.0374463, 0.161217, 4.62399)
+
+[node name="losyash" parent="Characters" instance=ExtResource("22_vwijd")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.3246, 0.164009, 3.10184)
+
+[node name="nyusha" parent="Characters" instance=ExtResource("23_ygod7")]
+transform = Transform3D(0.628017, 0, -0.778199, 0, 1, 0, 0.778199, 0, 0.628017, 4.203, 0.2, 6.375)
+
+[node name="barash" parent="Characters" instance=ExtResource("24_atstk")]
+transform = Transform3D(0.93245, 0, -0.361299, 0, 1, 0, 0.361299, 0, 0.93245, 3.25779, 0.200149, 2.69223)
+
+[node name="kopatych" parent="Characters" instance=ExtResource("25_lwsf6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.261883, -4)
+
+[node name="karych" parent="Characters" instance=ExtResource("26_s1qpc")]
+transform = Transform3D(0.283229, 0, -0.959052, 0, 1, 0, 0.959052, 0, 0.283229, 5.53253, 0.234068, -1.8066)
+
+[node name="sovunya" parent="Characters" instance=ExtResource("27_7ygah")]
+transform = Transform3D(0.974917, 0, -0.22257, 0, 1, 0, 0.22257, 0, 0.974917, 3.26171, 0.174462, -5.90309)
+
+[node name="pin" parent="Characters" instance=ExtResource("28_qsbar")]
+transform = Transform3D(-0.789823, 0, 0.613335, 0, 1, 0, -0.613335, 0, -0.789823, -2.81466, 0.179313, 6.67194)
+
+[node name="bibi" parent="Characters" instance=ExtResource("29_8i2vl")]
+transform = Transform3D(-0.764269, 0, 0.644898, 0, 1, 0, -0.644898, 0, -0.764269, -4.09628, -2.38419e-07, 4.47589)
+
+[node name="dicktor" parent="Characters" instance=ExtResource("29_7k56q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.570081, 0, 6.12089)
+
+[node name="MashupEffects" parent="." instance=ExtResource("29_isxxg")]
+unique_name_in_owner = true
+visible = false
+
+[node name="dancer1" type="Marker3D" parent="MashupEffects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.228299, 8.7698)
+
+[node name="dancer2" type="Marker3D" parent="MashupEffects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53551, 0.228299, 9)
+
+[node name="dancer3" type="Marker3D" parent="MashupEffects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1249, 0.228299, 9)
+
+[node name="dancer4" type="Marker3D" parent="MashupEffects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95856, 0.236358, 9.50741)
+
+[node name="dancer5" type="Marker3D" parent="MashupEffects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93651, 0.234828, 9.41441)
+
+[node name="dancer6" type="Marker3D" parent="MashupEffects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.680365, 10.2527)
+
+[node name="dancer7" type="Marker3D" parent="MashupEffects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08013, 0.680365, 10.2527)
+
+[node name="dancer8" type="Marker3D" parent="MashupEffects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75275, 0.680365, 10.2527)
+
+[node name="dancer9" type="Marker3D" parent="MashupEffects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67579, 0.460671, 12.1695)
+
+[node name="Tripod" parent="." instance=ExtResource("30_y6ml0")]
+
+[node name="Director" type="Node3D" parent="." node_paths=PackedStringArray("character_krosh", "character_yozhik", "character_losyash", "character_nyusha", "character_barash", "character_kopatych", "character_karych", "character_sovunya", "character_pin", "character_bibi", "character_narrator")]
+unique_name_in_owner = true
+script = ExtResource("31_hj65o")
+character_krosh = NodePath("../Characters/krosh")
+character_yozhik = NodePath("../Characters/yozhik")
+character_losyash = NodePath("../Characters/losyash")
+character_nyusha = NodePath("../Characters/nyusha")
+character_barash = NodePath("../Characters/barash")
+character_kopatych = NodePath("../Characters/kopatych")
+character_karych = NodePath("../Characters/karych")
+character_sovunya = NodePath("../Characters/sovunya")
+character_pin = NodePath("../Characters/pin")
+character_bibi = NodePath("../Characters/bibi")
+character_narrator = NodePath("../Characters/dicktor")
+
+[connection signal="mode_specific_setup" from="Director" to="Tripod" method="mode_specific_setup"]
+[connection signal="turn_to_speaker" from="Director" to="Tripod" method="turn_to_speaker"]

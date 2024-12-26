@@ -1,0 +1,43 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://byqx05h4qs8vn"]
+
+[ext_resource type="Texture2D" uid="uid://c7faxb7q3geuw" path="res://assets/skyboxes/sky1.png" id="1_b57ts"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_t35fx"]
+panorama = ExtResource("1_b57ts")
+
+[sub_resource type="Sky" id="Sky_lrjom"]
+sky_material = SubResource("PanoramaSkyMaterial_t35fx")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 1.25
+sky = SubResource("Sky_lrjom")
+ambient_light_source = 2
+ambient_light_color = Color(0.615686, 0.462745, 0.431373, 1)
+tonemap_mode = 3
+tonemap_exposure = 0.5
+ssao_intensity = 9.37
+ssil_radius = 7.36
+ssil_intensity = 2.53
+ssil_sharpness = 1.0
+glow_levels/2 = 0.88
+glow_levels/3 = 1.14
+glow_levels/4 = 0.3
+glow_levels/5 = 1.15
+glow_intensity = 0.08
+glow_strength = 1.61
+fog_enabled = true
+fog_light_color = Color(0.509804, 0.909804, 1, 1)
+fog_light_energy = 0.98
+fog_density = 0.0114
+fog_sky_affect = 0.0
+fog_height = -2.0
+fog_height_density = 0.2
+volumetric_fog_density = 0.013
+volumetric_fog_emission = Color(0.356863, 1, 1, 1)
+volumetric_fog_anisotropy = 0.38
+volumetric_fog_length = 47.32
+volumetric_fog_ambient_inject = 1.72
+volumetric_fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_saturation = 1.2

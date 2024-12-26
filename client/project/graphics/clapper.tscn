@@ -1,0 +1,275 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7lr3gp14nwj1"]
+
+[ext_resource type="Script" path="res://scripts/ClapperTransition.gd" id="1_8qiwy"]
+[ext_resource type="Texture2D" uid="uid://bxo3gj2tidjvw" path="res://assets/graphics/clapper1.png" id="1_epewt"]
+[ext_resource type="Texture2D" uid="uid://cf0402tnw1413" path="res://assets/graphics/clapper2.png" id="2_2j6mf"]
+[ext_resource type="Theme" uid="uid://m38l8v8d7x3k" path="res://assets/styling/theme.tres" id="3_xggsp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v7fyn"]
+font_size = 36
+
+[sub_resource type="Animation" id="Animation_0rcqk"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clapper1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Clapper1:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1643, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Clapper1:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(360, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Clapper1/Clapper2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.610865]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Clapper1:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Clapper1:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Clapper1:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_e0l0w"]
+resource_name = "end"
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clapper1:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(618, -0.25, 0, 0.25, 0, 618, -0.25, 0, 0.25, 0, 209, 0, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 0.3, 0.55)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Clapper1:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(351, -0.25, 0, 0.25, 0, 351, -0.25, 0, 0.25, 0, 1129, 0, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 0.3, 0.55)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Clapper1:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.102974]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Clapper1:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.35),
+"transitions": PackedFloat32Array(0.31864, 0.466517),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.4, 1.4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Clapper1/Clapper2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3tq8p"]
+resource_name = "start"
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clapper1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.312414, -0.25, 0, 0.1, 0, 0.102974, -0.1, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Clapper1:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1565, -0.25, 0, 0.1, 0, 618, -0.1, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Clapper1:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(477, -0.25, 0, 0.25, 0, 351, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.35)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Clapper1/Clapper2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.15, 0.35),
+"transitions": PackedFloat32Array(6.06287, 0.105112),
+"update": 0,
+"values": [0.610865, 0.0]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Clapper1:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.75, -0.25, 0, 0.25, 0, 0.87, -0.1, 0, 0.1, 0, 0.8, -0.25, 0, 0.1, 0),
+"times": PackedFloat32Array(0.15, 0.4, 0.6)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Clapper1:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.85, -0.25, 0, 0.25, 0, 0.73, -0.1, 0, 0.1, 0, 0.8, -0.25, 0, 0.1, 0),
+"times": PackedFloat32Array(0.15, 0.4, 0.6)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_altg1"]
+_data = {
+"RESET": SubResource("Animation_0rcqk"),
+"end": SubResource("Animation_e0l0w"),
+"start": SubResource("Animation_3tq8p")
+}
+
+[node name="clapper" type="Node2D"]
+script = ExtResource("1_8qiwy")
+
+[node name="Clapper1" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(1643, 360)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_epewt")
+
+[node name="Clapper2" type="Sprite2D" parent="Clapper1"]
+z_index = 1
+z_as_relative = false
+position = Vector2(332, -225)
+rotation = 0.610865
+texture = ExtResource("2_2j6mf")
+offset = Vector2(-332, 225)
+
+[node name="topic" type="Label" parent="Clapper1"]
+offset_left = -289.0
+offset_top = 63.0
+offset_right = 258.0
+offset_bottom = 182.0
+theme = ExtResource("3_xggsp")
+text = "Загрузка..."
+label_settings = SubResource("LabelSettings_v7fyn")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="progress" type="ProgressBar" parent="Clapper1"]
+offset_left = -290.0
+offset_top = 231.0
+offset_right = 256.0
+offset_bottom = 258.0
+theme = ExtResource("3_xggsp")
+max_value = 8.0
+rounded = true
+
+[node name="anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_altg1")
+}

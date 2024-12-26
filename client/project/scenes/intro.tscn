@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci7xon8pqbxqy"]
+
+[ext_resource type="VideoStream" path="res://assets/video/lowquality.ogv" id="1_uuq17"]
+[ext_resource type="PackedScene" uid="uid://b7lr3gp14nwj1" path="res://graphics/clapper.tscn" id="2_7eesa"]
+[ext_resource type="Shader" path="res://assets/shaders/invert.gdshader" id="4_t04p3"]
+
+[sub_resource type="GDScript" id="GDScript_cxa46"]
+script/source = "extends Control
+
+@onready var global = get_node(\"/root/Global\")
+@onready var episode_ready = global.next_episode_fetched
+@onready var clapper = get_node(\"clapper\")
+
+func _ready():
+	global.stop_music()
+	
+	global.connect(\"episode_ready\", _on_episode_ready)
+	await wait(0.1)
+	
+	update_clapper_gfx()
+	clapper.start()
+	
+	await wait(1)
+	while not episode_ready:
+		update_clapper_gfx()
+		await wait(1)
+	
+	global.load_random_world()
+	
+func _on_episode_ready():
+	episode_ready = true	
+
+
+func update_clapper_gfx():
+	var ep = global.fetching_episode_data
+	clapper.set_topic(ep.topic.text)
+	clapper.set_progress(ep.get('progress'), ep.get('progressMax'))
+
+func wait (seconds: float):
+	var timer = Timer.new()
+	timer.wait_time = seconds
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	await timer.timeout
+	remove_child(timer)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vuhbp"]
+shader = ExtResource("4_t04p3")
+
+[node name="intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_cxa46")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+audio_track = 1
+stream = ExtResource("1_uuq17")
+autoplay = true
+expand = true
+buffering_msec = 1000
+
+[node name="clapper" parent="." instance=ExtResource("2_7eesa")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_vuhbp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)

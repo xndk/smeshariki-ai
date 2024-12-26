@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://o2542btv5wqw"]
+
+[ext_resource type="LabelSettings" uid="uid://cw44si3tofwib" path="res://assets/styling/styleLabelCreditsSubtitle.tres" id="1_hic48"]
+
+[sub_resource type="GDScript" id="GDScript_uiteb"]
+script/source = "extends Label
+
+@export var item_name: String = \"name\"
+@export var style: int = 0
+
+var styles: Array[LabelSettings] = [
+	preload(\"res://assets/styling/styleLabelCreditsSubtitle.tres\"),
+	preload(\"res://assets/styling/styleLabelCreditsSpecial.tres\"),
+	preload(\"res://assets/styling/styleLabelCreditsSpecial2.tres\"),
+]
+
+func set_item_name(n: String):
+	item_name = n
+	text = item_name
+	
+func set_style(s: int):
+	style = s
+	label_settings = styles[s]
+
+func set_centered(centered: bool):
+	horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER if centered else HORIZONTAL_ALIGNMENT_LEFT
+"
+
+[node name="subtitle" type="Label"]
+size_flags_horizontal = 3
+text = "name"
+label_settings = ExtResource("1_hic48")
+script = SubResource("GDScript_uiteb")

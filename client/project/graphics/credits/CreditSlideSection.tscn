@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://12sq8sr1623g"]
+
+[ext_resource type="LabelSettings" uid="uid://k3mnaytfuegt" path="res://assets/styling/styleLabelCreditsTitle.tres" id="1_lf0qi"]
+
+[sub_resource type="GDScript" id="GDScript_78dcl"]
+script/source = "extends VBoxContainer
+
+@export var title: String = \"Заголовок\"
+@export var columns: int = 1
+
+var item_scene = preload(\"res://graphics/credits/CreditSlideSectionItem.tscn\")
+
+func set_title(t: String):
+	title = t
+	$title.text = title
+	
+func set_columns(c: int):
+	columns = c
+	$items.columns = columns
+
+func add_item(item_name: String, style: int):
+	var item_elem = item_scene.instantiate()
+	item_elem.set_item_name(item_name)
+	item_elem.set_style(style)
+	item_elem.set_centered(columns == 1)
+	$items.add_child(item_elem)
+"
+
+[node name="CreditsItem" type="VBoxContainer"]
+size_flags_horizontal = 4
+theme_override_constants/separation = -6
+script = SubResource("GDScript_78dcl")
+
+[node name="title" type="Label" parent="."]
+layout_mode = 2
+text = "Заголовок"
+label_settings = ExtResource("1_lf0qi")
+horizontal_alignment = 1
+
+[node name="items" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 48
+theme_override_constants/v_separation = -5
+columns = 2

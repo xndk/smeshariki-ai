@@ -1,0 +1,137 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2nrdp54kfnqd"]
+
+[ext_resource type="Script" path="res://scripts/subwaysurf/surfer.gd" id="1_8timx"]
+[ext_resource type="PackedScene" uid="uid://cr66tl66guvqp" path="res://assets/characters/kopatych.glb" id="2_pv68n"]
+[ext_resource type="Environment" uid="uid://bwhxxar05t0t" path="res://assets/environments/worldEnvironment2.tres" id="3_v20m5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ou6y2"]
+radius = 0.787724
+height = 2.43826
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_18rje"]
+size = Vector3(8, 0.399, 9.348)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_webxt"]
+size = Vector2(8, 60)
+
+[sub_resource type="GDScript" id="GDScript_mket7"]
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	position.z += 6 * delta
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ky5f"]
+size = Vector3(2, 2, 2)
+
+[node name="subwaysurfers" type="Node3D"]
+
+[node name="surfer" type="CharacterBody3D" parent="."]
+script = ExtResource("1_8timx")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="surfer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+radius = 1.0
+rings = 12
+
+[node name="char" parent="surfer" instance=ExtResource("2_pv68n")]
+transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 0, 0.0876311, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="surfer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20014, 0)
+shape = SubResource("CapsuleShape3D_ou6y2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.948323, 0.317305, 0, -0.317305, 0.948323, 0, 5.567, 5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(0.99863, 0.0523359, -7.91987e-09, -0.0522438, 0.996872, 0.0593064, 0.00310386, -0.0592251, 0.99824, 8.10036, 0.487333, 5.46967)
+light_color = Color(0.956863, 0.929412, 0.854902, 1)
+shadow_opacity = 0.26
+shadow_blur = 2.086
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_18rje")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.4449)
+mesh = SubResource("PlaneMesh_webxt")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.99863, 0.0523359, -5.02463e-08, 0.0127791, -0.243839, 0.969732, 0.0507518, -0.968403, -0.244174, -1.43507, 6.44034, 3.55288)
+light_color = Color(0.85098, 0.862745, 0.87451, 1)
+light_energy = 0.48
+shadow_enabled = true
+shadow_bias = 0.038
+shadow_blur = 7.82
+
+[node name="world" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991445, -16.2812)
+script = SubResource("GDScript_mket7")
+
+[node name="obstacle" type="StaticBody3D" parent="world"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="world/obstacle"]
+size = Vector3(2, 2, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/obstacle"]
+shape = SubResource("BoxShape3D_6ky5f")
+
+[node name="obstacle2" type="StaticBody3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="world/obstacle2"]
+size = Vector3(2, 2, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/obstacle2"]
+shape = SubResource("BoxShape3D_6ky5f")
+
+[node name="obstacle3" type="StaticBody3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -13)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="world/obstacle3"]
+size = Vector3(2, 2, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/obstacle3"]
+shape = SubResource("BoxShape3D_6ky5f")
+
+[node name="obstacle4" type="StaticBody3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 2.45, 0, 0, 0, 7, 3, 1, -24)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="world/obstacle4"]
+size = Vector3(2, 2, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/obstacle4"]
+shape = SubResource("BoxShape3D_6ky5f")
+
+[node name="obstacle5" type="StaticBody3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 2.45, 0, 0, 0, 7, 1.19209e-07, 1, -37)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="world/obstacle5"]
+size = Vector3(2, 2, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/obstacle5"]
+shape = SubResource("BoxShape3D_6ky5f")
+
+[node name="obstacle6" type="StaticBody3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 2.45, 0, 0, 0, 7, 3, 1, -46)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="world/obstacle6"]
+size = Vector3(2, 2, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/obstacle6"]
+shape = SubResource("BoxShape3D_6ky5f")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = ExtResource("3_v20m5")

@@ -1,0 +1,98 @@
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://cakpcjifpbuf8"]
+
+[ext_resource type="Texture2D" uid="uid://cwetbcuv7lati" path="res://assets/skyboxes/sky1-night.png" id="1_auaea"]
+
+[sub_resource type="Shader" id="Shader_4vxej"]
+code = "
+// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable's PanoramaSkyMaterial.
+
+shader_type sky;
+
+uniform sampler2D source_panorama : filter_linear, source_color, hint_default_black;
+uniform float Shift_Hue;
+
+void sky() {
+	COLOR = texture(source_panorama, SKY_COORDS).rgb;
+	
+	// Input:3
+	vec3 input_color;
+	vec3 texture_color = texture(source_panorama, SKY_COORDS).rgb;
+	input_color = texture_color.rgb;
+
+// VectorFunc:2
+	vec3 color_hsv;
+	{
+		vec3 c = input_color;
+		vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+		vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+		vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+		float d = q.x - min(q.w, q.y);
+		float e = 1.0e-10;
+		color_hsv=vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+	}
+
+	color_hsv.x = mod((color_hsv.x + Shift_Hue), 1.0f);
+
+// VectorFunc:5
+	vec3 color_rgb;
+	{
+		vec3 c = color_hsv;
+		vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+		vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+		color_rgb=c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+	}
+
+// Output:0
+	texture_color = color_rgb.rgb;
+	COLOR = texture_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ooie4"]
+shader = SubResource("Shader_4vxej")
+shader_parameter/Shift_Hue = 0.35
+shader_parameter/source_panorama = ExtResource("1_auaea")
+
+[sub_resource type="Sky" id="Sky_n3trj"]
+sky_material = SubResource("ShaderMaterial_ooie4")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_n3trj")
+ambient_light_source = 2
+ambient_light_color = Color(1, 0.188235, 0.188235, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 3
+tonemap_exposure = 0.2
+tonemap_white = 0.5
+ssil_enabled = true
+ssil_radius = 2.75
+ssil_intensity = 3.45
+glow_enabled = true
+glow_levels/1 = 3.85
+glow_levels/2 = 4.35
+glow_levels/4 = 1.6
+glow_normalized = true
+glow_intensity = 0.84
+glow_strength = 1.03
+glow_bloom = 1.0
+glow_blend_mode = 1
+glow_hdr_scale = 2.02
+fog_enabled = true
+fog_light_color = Color(0.709804, 0.0980392, 0.0980392, 1)
+fog_light_energy = 0.84
+fog_density = 0.0285
+fog_sky_affect = 0.0
+fog_height = -2.0
+fog_height_density = 0.2
+volumetric_fog_density = 0.02
+volumetric_fog_emission = Color(0.266667, 0.717647, 0.67451, 1)
+volumetric_fog_emission_energy = 2.0
+volumetric_fog_anisotropy = 0.38
+volumetric_fog_length = 71.7
+volumetric_fog_ambient_inject = 1.72
+volumetric_fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_contrast = 1.17
+adjustment_saturation = 0.6

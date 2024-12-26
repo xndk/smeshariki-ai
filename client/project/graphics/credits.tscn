@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgfb6ay0yp8ie"]
+
+[ext_resource type="Texture2D" uid="uid://tiwcvx6pko4q" path="res://assets/graphics/credits.png" id="4_vh3pd"]
+[ext_resource type="Script" path="res://scripts/Credits.gd" id="5_qmuu6"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="6_i7vh3"]
+
+[sub_resource type="Animation" id="Animation_qiy8q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slide5:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_upvf7"]
+resource_name = "credits"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slide5:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t04xq"]
+_data = {
+"RESET": SubResource("Animation_qiy8q"),
+"credits": SubResource("Animation_upvf7")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_csctq"]
+shader = ExtResource("6_i7vh3")
+shader_parameter/blur_center = Vector2(0.5, 0.5)
+shader_parameter/blur_power = 0.01
+shader_parameter/sampling_count = 6
+
+[node name="credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_qmuu6")
+
+[node name="slides" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 64
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t04xq")
+}
+
+[node name="slide5" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_vh3pd")
+centered = false
+
+[node name="slide6" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_vh3pd")
+centered = false
+
+[node name="slide7" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_vh3pd")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_csctq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,252 @@
+[gd_scene load_steps=19 format=3 uid="uid://i55vqagr8wtc"]
+
+[ext_resource type="Theme" uid="uid://m38l8v8d7x3k" path="res://assets/styling/theme.tres" id="1_u80ok"]
+[ext_resource type="Script" path="res://scripts/EpisodeUI.gd" id="2_kom3a"]
+[ext_resource type="FontFile" uid="uid://dxkg3qd86m12v" path="res://assets/fonts/mplus-rounded.ttf" id="3_ayfg3"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="3_sp4tq"]
+[ext_resource type="Texture2D" uid="uid://e38521g5svi6" path="res://assets/shaders/vignette.png" id="3_uo0gq"]
+[ext_resource type="PackedScene" uid="uid://b7lr3gp14nwj1" path="res://graphics/clapper.tscn" id="4_spvyu"]
+[ext_resource type="PackedScene" uid="uid://bgfb6ay0yp8ie" path="res://graphics/credits.tscn" id="5_8colk"]
+[ext_resource type="Script" path="res://scripts/Slider.gd" id="5_42b5p"]
+[ext_resource type="Texture2D" uid="uid://unuvvhs7h6om" path="res://assets/graphics/infobox-slide1.png" id="5_78mmi"]
+[ext_resource type="Texture2D" uid="uid://d3v7oas8rlle2" path="res://assets/graphics/infobox-slide2.png" id="6_l0k3u"]
+[ext_resource type="Texture2D" uid="uid://d2m4wvk4yyywb" path="res://assets/graphics/infobox-slide3.png" id="8_y8nwn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjbd1"]
+shader = ExtResource("3_sp4tq")
+shader_parameter/blur_center = Vector2(0.5, 0.5)
+shader_parameter/blur_power = 0.0
+shader_parameter/sampling_count = 16
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h8sp4"]
+blend_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_sne10"]
+line_spacing = 0.0
+font = ExtResource("3_ayfg3")
+font_size = 14
+font_color = Color(1, 0.796078, 0, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rf3ri"]
+font_size = 30
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tybot"]
+font_size = 30
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ro6q"]
+font_size = 40
+font_color = Color(0.34902, 0.945098, 1, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5xxit"]
+font = ExtResource("3_ayfg3")
+font_size = 20
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u80ok")
+script = ExtResource("2_kom3a")
+
+[node name="zoomblur" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_qjbd1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vignette" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.192157)
+scale = Vector2(1.674, 1.413)
+texture = ExtResource("3_uo0gq")
+centered = false
+
+[node name="flash" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_h8sp4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="InfoboxSlider" type="MarginContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_top = -20
+script = ExtResource("5_42b5p")
+interval_seconds = 13.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/InfoboxSlider"]
+layout_mode = 2
+
+[node name="slideIntro" type="TextureRect" parent="MarginContainer/InfoboxSlider/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(640, 135)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("5_78mmi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="slideDonations" type="MarginContainer" parent="MarginContainer/InfoboxSlider"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/InfoboxSlider/slideDonations"]
+custom_minimum_size = Vector2(640, 148)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("6_l0k3u")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/InfoboxSlider/slideDonations"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+
+[node name="Label" type="Label" parent="MarginContainer/InfoboxSlider/slideDonations/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "100₽ — тема без очереди
+400₽ — нейро-мешап
+50₽ — добавь себя в локацию"
+label_settings = SubResource("LabelSettings_sne10")
+horizontal_alignment = 2
+
+[node name="slideDisclaimer" type="TextureRect" parent="MarginContainer/InfoboxSlider"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(640, 110)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("8_y8nwn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_right = 80
+
+[node name="subtitle" type="Label" parent="MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+label_settings = SubResource("LabelSettings_rf3ri")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 120
+
+[node name="theme" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "Тема:"
+label_settings = SubResource("LabelSettings_tybot")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="black" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="mashupTitlecard" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mashupTitlecard"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="mashupName" type="Label" parent="mashupTitlecard/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(540, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Название муз. клипа - Может быть длинное (VEVO)"
+label_settings = SubResource("LabelSettings_5ro6q")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="HFlowContainer" type="HFlowContainer" parent="mashupTitlecard/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="mashupTitlecard/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+text = "Нейро-mashup в исполнении:"
+label_settings = SubResource("LabelSettings_5xxit")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="mashupSingers" type="Label" parent="mashupTitlecard/VBoxContainer/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Никита Васин"
+label_settings = SubResource("LabelSettings_5xxit")
+vertical_alignment = 2
+
+[node name="clapper" parent="." instance=ExtResource("4_spvyu")]
+unique_name_in_owner = true
+
+[node name="credits" parent="." instance=ExtResource("5_8colk")]
+unique_name_in_owner = true
+layout_mode = 1

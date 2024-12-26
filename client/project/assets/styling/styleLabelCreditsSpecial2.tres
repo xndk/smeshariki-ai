@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d236r0mfbetyb"]
+
+[ext_resource type="FontFile" uid="uid://dxkg3qd86m12v" path="res://assets/fonts/mplus-rounded.ttf" id="1_17jvq"]
+
+[resource]
+font = ExtResource("1_17jvq")
+font_size = 42
+font_color = Color(0.262745, 0.321569, 0.870588, 1)
+outline_size = 9

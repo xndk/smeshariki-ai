@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://2t0mi06ffhbc"]
+
+[ext_resource type="FontFile" uid="uid://chghdepklkrnk" path="res://assets/fonts/smeshariki.ttf" id="1_sfnxu"]
+
+[sub_resource type="GDScript" id="GDScript_umvam"]
+script/source = "extends VBoxContainer
+
+@export var text: String = \"\"
+
+func set_text(t: String):
+	text = t
+	$CreditsItem/title.text = text
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_ggbpj"]
+line_spacing = 5.0
+font = ExtResource("1_sfnxu")
+font_size = 24
+font_color = Color(0.203922, 0.545098, 1, 1)
+outline_size = 9
+
+[node name="EndNote" type="VBoxContainer"]
+theme_override_constants/separation = 24
+alignment = 1
+script = SubResource("GDScript_umvam")
+
+[node name="CreditsItem" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = -6
+
+[node name="title" type="Label" parent="CreditsItem"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+text = "Мы не ассоциируемся со \"Смешариками\" с ГК \"Рики\" и не используем никакой контент, прямо находящийся под авторскими правами. Наши трансляции входят под определение \"преобразующего контента\", fair use, и как следствие, мы имеем полное право на проведение данных трансляций. Мы не пытаемся никого оскорбить и данная прямая трансляция предоставляется только в развлекательных целях! Если какая-либо компания, имеющая права на \"Смешариков\" хочет связаться с нами, обращайтесь к нам по почте: smesharikiai@gmail.me"
+label_settings = SubResource("LabelSettings_ggbpj")
+horizontal_alignment = 1
+autowrap_mode = 3

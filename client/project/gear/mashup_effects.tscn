@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch0qumkt86xxf"]
+
+[ext_resource type="PackedScene" uid="uid://dyc2bheexo065" path="res://gear/light_cone.tscn" id="1_52h1r"]
+
+[node name="MashupEffects" type="Node3D"]
+
+[node name="LightCone" parent="." instance=ExtResource("1_52h1r")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 5)
+follow_target = true
